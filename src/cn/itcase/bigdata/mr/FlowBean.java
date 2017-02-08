@@ -68,4 +68,9 @@ public class FlowBean implements WritableComparable<FlowBean>{
 	public int compareTo(FlowBean o) {
 		return this.totalflow > o.getTotalflow() ? -1 : 1;
 	}
+	
+	@Override
+	public String toString() {
+		return upflow + "\t" + downflow + "\t" + totalflow;
+	}
 }
