@@ -33,6 +33,9 @@ public class FlowCount {
 			
 			String[] split = line.split("\t");
 			int length = split.length;
+			if(length<3) {
+				return;
+			}
 			long upflow = Long.valueOf(split[length-2]);
 			long downflow = Long.valueOf(split[length-3]);
 			
@@ -61,6 +64,9 @@ public class FlowCount {
 	
 	public static void main(String[] args) throws Exception {
 		Configuration conf = new Configuration();
+		
+		conf.set("mapreduce.framework.name", "local");
+		
 		Job job = Job.getInstance(conf);
 		
 		job.setJarByClass(FlowCount.class);
